@@ -1,0 +1,10 @@
+{% extends 'testsite/thing.html' %}
+
+{% block content %}
+Register new patient
+<form method="post" action="/new_patient/">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit", name="save">Register</button>
+</form>
+{% endblock %}

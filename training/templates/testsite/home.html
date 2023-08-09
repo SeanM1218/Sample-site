@@ -1,0 +1,9 @@
+{% extends 'testsite/thing.html' %}
+
+{% block content %}
+<h1>Home Page</h1>
+
+{% for patient in ls.objects.all %}
+    <li>{{% ls.name %}}</li>
+{% endfor %}
+{% endblock %}

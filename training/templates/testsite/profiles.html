@@ -1,0 +1,20 @@
+{% extends 'testsite/thing.html' %}
+
+{% block content %}
+<h1>{{ls.name}}</h1>
+<form method="post" action="#">
+    {% csrf_token %}
+    <ul>
+        {% for illness in ls.illness_set.all %}
+            {% if illness.treated == True %}
+                <li>{{illness.text}}<input type="checkbox", value="clicked", name="c{{illness.id}}" checked> - TREATED</li>
+            {% else %}
+                <li>{{illness.text}}<input type="checkbox", value="clicked", name="c{{illness.id}}"> - TREATED</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <button type="submit", name="save", value="save">Save</button>
+    <input type="text", name="new">
+    <button type="submit", name="newIllness", value="newIllness">Add Illness</button>
+</form>
+{% endblock %}
